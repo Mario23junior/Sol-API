@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class Conexao {
    
-	private static final Connection connection = FactoryConecation();
+	private static final Connection connection = FactoryConnection();
 	
-	private static Connection FactoryConecation() {
+	private static Connection FactoryConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
