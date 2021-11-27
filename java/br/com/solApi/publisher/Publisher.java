@@ -8,7 +8,7 @@ public class Publisher {
     
 	public static void main(String[] args) {
 		
-		String porta = "7081";
+		String porta = "8085";
 		System.out.println("publicando Serviço na porta : "+ porta);
  		Endpoint.publish("http://localhost:"+porta+"/sol",new Service());
  		String service = "http://localhost:"+porta+"/sol?wsdl";
