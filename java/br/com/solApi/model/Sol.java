@@ -1,5 +1,8 @@
 package br.com.solApi.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Sol {
   
 	private Integer id;
@@ -12,8 +15,7 @@ public class Sol {
 	private String tipo;
 	
 	public Sol() {
-		// TODO Auto-generated constructor stub
-	}
+ 	}
 
 	public Integer getId() {
 		return id;
