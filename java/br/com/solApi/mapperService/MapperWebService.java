@@ -6,8 +6,8 @@ import javax.jws.WebService;
 import br.com.solApi.model.Sol;
 
 @WebService
-public interface mapper {
+public interface MapperWebService {
   
 	@WebMethod
-	boolean criarInformacao(Sol sol);
+	Sol criarInformacao(Sol sol);
 }
