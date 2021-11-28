@@ -11,13 +11,13 @@ import br.com.solApi.model.Sol;
 @WebService(endpointInterface = "br.com.solApi.mapperService.MapperWebService")
 public class Service implements MapperWebService {
 
-	public boolean criarInformacao(Sol sol) {
+	public Sol criarInformacao(Sol sol) {
 		SolDao dao = new SolDao();
 		try {
 			return dao.saveAll(sol);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 	}
 

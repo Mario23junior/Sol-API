@@ -12,5 +12,5 @@ import br.com.solApi.model.Sol;
 public interface MapperWebService {
   
 	@WebMethod
-	boolean criarInformacao(Sol sol);
+	Sol criarInformacao(Sol sol);
 }
