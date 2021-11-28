@@ -9,16 +9,16 @@ import br.com.solApi.model.Sol;
 
 public class SolDao {
 
-	public boolean saveAll(Sol sol) throws SQLException {
+	public Sol saveAll(Sol sol) throws SQLException {
 		String sql = "insert into sol (magnitude_aparente,metalicidade,adjetivo,"
-				+ "raio_equatorial,obliquidade,declinacao,tipo) "
+				+ "raio_equatorial,obliquidade,declinacao,tipo) " 
 				+ " values (?,?,?,?,?,?,?);";
 
 		Connection con = Conexao.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		try {
-  			ps.setString(1, sol.getMagnitude_aparente());
+			ps.setString(1, sol.getMagnitude_aparente());
 			ps.setDouble(2, sol.getMetalicidade());
 			ps.setString(3, sol.getAdjetivo());
 			ps.setString(4, sol.getRaio_equatorial());
@@ -26,14 +26,14 @@ public class SolDao {
 			ps.setString(6, sol.getDeclinacao());
 			ps.setString(7, sol.getTipo());
 			ps.execute();
-			
-			return true;
+
+			return sol;
 		} catch (SQLException e) {
 			e.getStackTrace();
 		} finally {
 			ps.close();
 		}
-		System.out.println("Errooo........");
-		return false;
+		return null;
+
 	}
 }
