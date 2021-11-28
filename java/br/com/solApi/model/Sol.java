@@ -1,17 +1,36 @@
 package br.com.solApi.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class Sol {
   
+	@XmlElement(required = false)
 	private Integer id;
+	
+	@XmlElement(required = true)
 	private String magnitude_aparente;
+	
+	@XmlElement(required = true)
 	private Double metalicidade;
+	
+	@XmlElement(required = true)
 	private String adjetivo;
+	
+	@XmlElement(required = true)
 	private String raio_equatorial;
+	
+	@XmlElement(required = true)
 	private Double obliquidade;
+	
+	@XmlElement(required = true)
 	private String declinacao;
+	
+	@XmlElement(required = true)
 	private String tipo;
 	
 	public Sol() {
