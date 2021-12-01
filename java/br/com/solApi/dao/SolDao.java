@@ -5,11 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import br.com.solApi.Conection.Conexao;
+import br.com.solApi.Utils.Utils;
 import br.com.solApi.exception.CustomMessageException;
 import br.com.solApi.model.Sol;
 
 public class SolDao {
 
+	public Utils utils;
+	
 	public Sol saveAll(Sol sol) throws SQLException {
 		String sql = "insert into sol (magnitude_aparente,"
 				+ "metalicidade,adjetivo, "
@@ -39,13 +42,12 @@ public class SolDao {
 	}
 
 	public Sol updateData(Sol sol) throws SQLException {
- 		
+		utils.ExceptinDuplicateErroImple(sol);
 		String sql = "update sol set magnitude_aparente = ?,"
 				+ " metalicidade = ? ,adjetivo = ?, "
 				+ " raio_equatorial = ? ,obliquidade = ?,"
 				+ " declinacao = ?,tipo = ? "
 				+ " where id = ?;";
- 
 		Connection con = Conexao.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
 		
@@ -67,27 +69,8 @@ public class SolDao {
 			ps.close();
 		}
 		throw new CustomMessageException("Erro ao Atualizar informações");
-		
-
-	}
+	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
