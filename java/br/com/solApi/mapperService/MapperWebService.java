@@ -17,7 +17,13 @@ public interface MapperWebService {
    
 	@RequestWrapper(localName = "CadastrandoDados")
 	@ResponseWrapper(localName = "DadosSol")
-	@WebMethod(action = "cadastrando" , operationName = "CriarDados")
+	@WebMethod(action = "cadastrando" , operationName = "Salvando")
 	@WebResult(name = "dadosCriados")
 	Sol criarInformacao(@WebParam(name = "SolValores") Sol sol);
+	
+	@RequestWrapper(localName = "AlterandoDados")
+	@ResponseWrapper(localName = "Alterar")
+	@WebMethod(action = "Alterando" , operationName = "Atualizando")
+	@WebResult(name = "DadosAlterados")
+	Sol alterarInformcao();
 }
