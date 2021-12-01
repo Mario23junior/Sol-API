@@ -25,5 +25,5 @@ public interface MapperWebService {
 	@ResponseWrapper(localName = "Alterar")
 	@WebMethod(action = "Alterando" , operationName = "Atualizando")
 	@WebResult(name = "DadosAlterados")
-	Sol alterarInformcao();
+	Sol alterarInformcao(@WebParam(name = "SolValores") Sol sol);
 }

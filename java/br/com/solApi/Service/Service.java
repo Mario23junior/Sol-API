@@ -21,8 +21,13 @@ public class Service implements MapperWebService {
 		}
 	}
 
- 	public Sol alterarInformcao() {
- 		return null;
+	public Sol alterarInformcao(Sol sol) {
+		SolDao dao = new SolDao();
+		try {
+			return dao.updateData(sol);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
-
 }
