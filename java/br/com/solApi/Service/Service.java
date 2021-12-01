@@ -21,4 +21,8 @@ public class Service implements MapperWebService {
 		}
 	}
 
+ 	public Sol alterarInformcao() {
+ 		return null;
+	}
+
 }

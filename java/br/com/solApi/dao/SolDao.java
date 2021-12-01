@@ -5,13 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import br.com.solApi.Conection.Conexao;
+import br.com.solApi.exception.CustomMessageException;
 import br.com.solApi.model.Sol;
 
 public class SolDao {
 
 	public Sol saveAll(Sol sol) throws SQLException {
-		String sql = "insert into sol (magnitude_aparente,metalicidade,adjetivo,"
-				+ "raio_equatorial,obliquidade,declinacao,tipo) " 
+		String sql = "insert into sol (magnitude_aparente,"
+				+ "metalicidade,adjetivo, "
+				+ " raio_equatorial,obliquidade,declinacao,tipo) " 
 				+ " values (?,?,?,?,?,?,?);";
 
 		Connection con = Conexao.getConnection();
@@ -26,14 +28,13 @@ public class SolDao {
 			ps.setString(6, sol.getDeclinacao());
 			ps.setString(7, sol.getTipo());
 			ps.execute();
-
 			return sol;
 		} catch (SQLException e) {
 			e.getStackTrace();
 		} finally {
 			ps.close();
 		}
-		return null;
-
+		throw new CustomMessageException("Erro ao cadastrar valores no banco de dados");
+		
 	}
 }
