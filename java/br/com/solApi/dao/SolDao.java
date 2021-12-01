@@ -37,4 +37,58 @@ public class SolDao {
 		throw new CustomMessageException("Erro ao cadastrar valores no banco de dados");
 		
 	}
+
+	public Sol updateData(Sol sol) throws SQLException {
+ 		
+		String sql = "update sol set magnitude_aparente = ?,"
+				+ " metalicidade = ? ,adjetivo = ?, "
+				+ " raio_equatorial = ? ,obliquidade = ?,"
+				+ " declinacao = ?,tipo = ? "
+				+ " where id = ?;";
+ 
+		Connection con = Conexao.getConnection();
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		try {
+			ps.setString(1, sol.getMagnitude_aparente());
+			ps.setDouble(2, sol.getMetalicidade());
+			ps.setString(3, sol.getAdjetivo());
+			ps.setString(4, sol.getRaio_equatorial());
+			ps.setDouble(5, sol.getObliquidade());
+			ps.setString(6, sol.getDeclinacao());
+			ps.setString(7, sol.getTipo());
+			ps.setInt(8, sol.getId());
+
+			ps.execute();
+			return sol;
+		} catch (SQLException e) {
+			e.getStackTrace();
+		} finally {
+			ps.close();
+		}
+		throw new CustomMessageException("Erro ao Atualizar informações");
+		
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
