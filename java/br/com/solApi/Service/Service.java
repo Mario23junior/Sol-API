@@ -1,6 +1,7 @@
 package br.com.solApi.Service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.jws.WebService;
 
@@ -29,5 +30,15 @@ public class Service implements MapperWebService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+ 	public ArrayList<Sol> exibirDataAll(Sol sol) {
+ 		SolDao dao = new SolDao();
+ 		try {
+ 		  return dao.lista();
+ 		} catch(SQLException e) {
+ 			e.printStackTrace();
+ 			return null;
+ 		}
 	}
 }
