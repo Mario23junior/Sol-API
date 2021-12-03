@@ -1,5 +1,7 @@
 package br.com.solApi.mapperService;
 
+import java.util.ArrayList;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -26,4 +28,10 @@ public interface MapperWebService {
 	@WebMethod(action = "Alterando" , operationName = "Atualizando")
 	@WebResult(name = "DadosAlterados")
 	Sol alterarInformcao(@WebParam(name = "SolValores") Sol sol);
+	
+	@RequestWrapper(localName = "ListandoTodas")
+	@ResponseWrapper(localName = "Listando")
+	@WebMethod(action = "ListaCompleta" , operationName = "ListaDeTodos")
+	@WebResult(name = "ListaCientifica")
+	ArrayList<Sol> exibirDataAll(@WebParam(name = "TodosAsInformacao") Sol sol);
 }
