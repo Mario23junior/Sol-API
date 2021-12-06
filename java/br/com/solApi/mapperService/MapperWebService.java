@@ -34,4 +34,11 @@ public interface MapperWebService {
 	@WebMethod(action = "ListaCompleta" , operationName = "ListaDeTodos")
 	@WebResult(name = "ListaCientifica")
 	ArrayList<Sol> exibirDataAll(@WebParam(name = "TodosAsInformacao") Sol sol);
+	
+	@RequestWrapper(localName = "DeletandoDados")
+	@ResponseWrapper(localName = "deletar")
+	@WebMethod(action = "Deletando" , operationName = "exluindo")
+	@WebResult(name = "deletandoInformcao")
+	Sol deletarData(@WebParam(name = "SolDeletar")Sol sol);
+	
 }
