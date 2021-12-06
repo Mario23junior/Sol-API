@@ -87,7 +87,7 @@ public class SolDao {
 				DataSol.setObliquidade(rs.getDouble("Obliquidade"));
 				DataSol.setDeclinacao(rs.getString("Declinacao"));
 				DataSol.setTipo(rs.getString("Tipo"));
-				
+
 				sol.add(DataSol);
 				return sol;
 
@@ -98,7 +98,23 @@ public class SolDao {
 			rs.close();
 			ps.close();
 		}
-		return sol;
+		throw new CustomMessageException("Erro ao listar informações");
 	}
 
+    public Sol deletar (Sol sol) throws SQLException {
+        String sql = "delete from sol where id = ? ;";
+    
+        Connection con = Conexao.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        try {            
+            ps.setInt(1, sol.getId());
+            ps.execute();
+            throw new CustomMessageException("Informação deletada com sucesso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally{
+            ps.close();
+        }
+		throw new CustomMessageException("Erro ao deletar informações");
+    }
 }

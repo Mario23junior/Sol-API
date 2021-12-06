@@ -21,7 +21,7 @@ public class Service implements MapperWebService {
 			return null;
 		}
 	}
-
+	
 	public Sol alterarInformcao(Sol sol) {
 		SolDao dao = new SolDao();
 		try {
@@ -32,13 +32,20 @@ public class Service implements MapperWebService {
 		}
 	}
 
- 	public ArrayList<Sol> exibirDataAll(Sol sol) {
- 		SolDao dao = new SolDao();
- 		try {
- 		  return dao.lista();
- 		} catch(SQLException e) {
- 			e.printStackTrace();
- 			return null;
- 		}
+	public Sol deletarData(Sol sol) {
+		SolDao dao = new SolDao();
+		try {
+			return dao.deletar(sol);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
+
+	@Override
+	public ArrayList<Sol> exibirDataAll(Sol sol) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
