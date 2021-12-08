@@ -1,6 +1,7 @@
 package br.com.solApi.mapperService;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -33,7 +34,7 @@ public interface MapperWebService {
 	@ResponseWrapper(localName = "Listando")
 	@WebMethod(action = "ListaCompleta" , operationName = "ListaDeTodos")
 	@WebResult(name = "ListaCientifica")
-	ArrayList<Sol> exibirDataAll(@WebParam(name = "TodosAsInformacao") Sol sol);
+	List<Sol> exibirDataAll();
 	
 	@RequestWrapper(localName = "DeletandoDados")
 	@ResponseWrapper(localName = "deletar")
@@ -41,4 +42,28 @@ public interface MapperWebService {
 	@WebResult(name = "deletandoInformcao")
 	Sol deletarData(@WebParam(name = "SolDeletar")Sol sol);
 	
+	@RequestWrapper(localName = "listandoDadosId")
+	@ResponseWrapper(localName = "listId")
+	@WebMethod(action = "listandoPorId" , operationName = "listaId")
+	@WebResult(name = "listandoInformacoes")
+	Sol findById(@WebParam(name = "SolValores") int id) throws SQLException;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

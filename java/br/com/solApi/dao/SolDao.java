@@ -68,7 +68,7 @@ public class SolDao {
 		throw new CustomMessageException("Erro ao Atualizar informações");
 	}
 
-	public ArrayList<Sol> lista() throws SQLException {
+	public ArrayList<Sol> listar() throws SQLException {
 		String sql = "select * from sol;";
 		ArrayList<Sol> sol = new ArrayList<Sol>();
 
@@ -117,4 +117,62 @@ public class SolDao {
         }
 		throw new CustomMessageException("Erro ao deletar informações");
     }
+
+	public Sol findById(int id) throws SQLException {
+ 		
+ 		String sql = "select * from som where id = ?";
+		Sol not = null;
+ 		
+ 		Connection con = Conexao.getConnection();
+ 		PreparedStatement ps = con.prepareStatement(sql);
+ 		ps.setInt(1, id);
+ 		ResultSet rs = ps.executeQuery();
+ 		
+ 		try {
+ 			if(rs.next()) {
+ 			  not = new Sol();
+ 			  not.setId(rs.getInt("id"));
+ 			  not.setMagnitude_aparente(rs.getString("Magnitude_aparente"));
+ 			  not.setMetalicidade(rs.getDouble("Metalicidade"));
+ 			  not.setAdjetivo(rs.getString("Adjetivo"));
+ 			  not.setRaio_equatorial(rs.getString("Raio_equatorial"));
+ 			  not.setObliquidade(rs.getDouble("Obliquidade"));
+ 			  not.setDeclinacao(rs.getString("Declinacao"));
+ 			  not.setTipo(rs.getString("Tipo"));
+ 			}
+ 		} catch (SQLException e) {
+ 			e.printStackTrace();
+ 		} finally {
+ 			rs.close();
+ 			ps.close();
+ 		}
+		return not;	
+	}
+   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

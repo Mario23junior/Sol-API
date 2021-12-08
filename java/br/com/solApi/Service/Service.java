@@ -1,7 +1,7 @@
 package br.com.solApi.Service;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.jws.WebService;
 
@@ -41,11 +41,19 @@ public class Service implements MapperWebService {
 			return null;
 		}
 	}
-
-	@Override
-	public ArrayList<Sol> exibirDataAll(Sol sol) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public Sol findById(int id) throws SQLException {
+		SolDao dao = new SolDao();
+		return dao.findById(id);
 	}
 
+ 	public List<Sol> exibirDataAll() {
+		SolDao dao = new SolDao();
+		try {
+			return dao.listar();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
